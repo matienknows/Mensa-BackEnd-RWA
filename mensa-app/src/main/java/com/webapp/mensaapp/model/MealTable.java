@@ -1,9 +1,8 @@
 package com.webapp.mensaapp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Entity
 public class MealTable {
@@ -12,6 +11,9 @@ public class MealTable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int calendarWeek;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    private Map<Weekday, Meal> mealTableWeek = new TreeMap<>();
 
     public int getId() {
         return id;
@@ -27,5 +29,12 @@ public class MealTable {
 
     public void setCalendarWeek(int calendarWeek) {
         this.calendarWeek = calendarWeek;
+    }
+    public Map<Weekday, Meal> getMealTableWeek() {
+        return mealTableWeek;
+    }
+
+    public void setMealTableWeek(Map<Weekday, Meal> mealTableWeek) {
+        this.mealTableWeek = mealTableWeek;
     }
 }
