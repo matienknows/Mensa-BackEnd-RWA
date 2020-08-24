@@ -22,7 +22,7 @@ public class MealTableService {
         return mealTableRepository.findById(id);
     }
 
-    public void deleteEssenById() {
-
+    public void addMealTable(MealTable mealTable) {
+        mealTableRepository.save(mealTable);
     }
 }

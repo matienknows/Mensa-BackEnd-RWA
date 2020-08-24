@@ -1,8 +1,12 @@
 package com.webapp.mensaapp.controller;
 
+import com.webapp.mensaapp.model.Meal;
 import com.webapp.mensaapp.model.MealTable;
 import com.webapp.mensaapp.service.MealTableService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,5 +28,11 @@ public class MealTableController {
     @GetMapping(value = "/{id}")
     public Optional<MealTable> getMealTableById(@PathVariable("id") int id) {
         return mealTableService.getMealTableById(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<MealTable> addMealTable(@RequestBody MealTable mealTable) {
+        mealTableService.addMealTable(mealTable);
+        return new ResponseEntity<> (mealTable, HttpStatus.OK);
     }
 }
