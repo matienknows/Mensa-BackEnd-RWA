@@ -9,12 +9,17 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/mealtable")
+@RequestMapping(value="/mealtable")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MealTableController {
 
     @Autowired
     private MealTableService mealTableService;
+
+    @GetMapping
+    public List<MealTable> getMealTables() {
+        return mealTableService.getMealTables();
+    }
 
     @GetMapping(value = "/{id}")
     public Optional<MealTable> getMealTableById(@PathVariable("id") int id) {

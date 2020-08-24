@@ -5,22 +5,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Weekday {
-    Monday(1),
-    Tuesday(2),
-    Wednesday(3),
-    Thursday(4),
-    Friday(5);
+    Monday(0),
+    Tuesday(1),
+    Wednesday(2),
+    Thursday(3),
+    Friday(4);
 
-    private int i;
-    private static Map map = new HashMap<>();
 
-    Weekday(int i) {
-        this.i = i;
+    private final int value;
+    private static final Map map = new HashMap<>();
+
+    Weekday(int value) {
+        this.value = value;
     }
 
     static {
         for (Weekday weekday : Weekday.values()) {
-            map.put(weekday.i, weekday);
+            map.put(weekday.value, weekday);
         }
     }
 
@@ -29,7 +30,7 @@ public enum Weekday {
     }
 
     public int getValue() {
-        return i;
+        return value;
     }
 
 }

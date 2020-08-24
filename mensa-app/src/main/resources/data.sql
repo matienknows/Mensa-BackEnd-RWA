@@ -11,9 +11,9 @@ VALUES (1),(2),(3),(4),(5),(6),(7);
 
 INSERT INTO meal_table_meal_table_week (meal_table_id, meal_table_week_id, meal_table_week_key)
 VALUES
-(1, 4, 1),
-(1, 3, 2),
-(1, 1, 3),
-(1, 5, 4),
-(1, 2, 5);
+(1, 4, 0),
+(1, 3, 1),
+(1, 1, 2),
+(1, 5, 3),
+(1, 2, 4);
 
