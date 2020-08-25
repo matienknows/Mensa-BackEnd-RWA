@@ -1,9 +1,7 @@
 package com.webapp.mensaapp.controller;
 
-import com.webapp.mensaapp.model.Meal;
 import com.webapp.mensaapp.model.MealTable;
 import com.webapp.mensaapp.service.MealTableService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +28,27 @@ public class MealTableController {
         return mealTableService.getMealTableById(id);
     }
 
+    @PutMapping
+    public ResponseEntity<MealTable> updateMealTable(@RequestBody MealTable mealTable) {
+        mealTableService.updateMeatTable(mealTable);
+        return new ResponseEntity<> (mealTable, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<MealTable> addMealTable(@RequestBody MealTable mealTable) {
         mealTableService.addMealTable(mealTable);
         return new ResponseEntity<> (mealTable, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value="/{id}")
+    public void deleteMealTableById(@PathVariable("id") int id) {
+        mealTableService.deleteMealTableById(id);
+
+    }
+
+    @PostMapping(path="/{mealTableId}/add/{mealId}/{weekday}")
+    public ResponseEntity<MealTable> addMealToMealTable( @PathVariable("mealTableId") int mealTableId, @PathVariable("mealId") int mealId, @PathVariable("weekday") int weekday) {
+        System.out.print(weekday);
+        return mealTableService.addMealToMealTable(mealTableId, mealId, weekday);
     }
 }

@@ -1,5 +1,7 @@
 package com.webapp.mensaapp.model;
 
+import org.hibernate.annotations.SortNatural;
+
 import javax.persistence.*;
 import java.util.Map;
 import java.util.TreeMap;
@@ -13,6 +15,7 @@ public class MealTable {
     private int calendarWeek;
 
     @ManyToMany(cascade = {CascadeType.ALL})
+    @SortNatural
     private Map<Weekday, Meal> mealTableWeek = new TreeMap<>();
 
     public int getId() {
