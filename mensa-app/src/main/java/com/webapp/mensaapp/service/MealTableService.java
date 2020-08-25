@@ -50,7 +50,7 @@ public class MealTableService {
     }
 
     @Transactional
-    public ResponseEntity<MealTable> addMealToMealTable(int mealTableId, int mealId, int weekday){
+    public ResponseEntity<MealTable> addMealToMealTable(int mealTableId, int mealId, int weekday) {
         Optional<MealTable> selectedMealTable = mealTableRepository.findById(mealTableId);
         Optional<Meal> selectedMeal = mealRepository.findById(mealId);
         if (!(selectedMealTable.isPresent() && selectedMeal.isPresent())) {
@@ -63,5 +63,17 @@ public class MealTableService {
         }
     }
 
-
+    @Transactional
+    public ResponseEntity<MealTable> deleteMealFromMealTable(int mealTableId, int mealId, int weekday) {
+        Optional<MealTable> selectedMealTable = mealTableRepository.findById(mealTableId);
+        Optional<Meal> selectedMeal = mealRepository.findById(mealId);
+        if (!(selectedMealTable.isPresent() && selectedMeal.isPresent())) {
+            return null;
+        } else {
+            MealTable mealTable = selectedMealTable.get();
+            Meal meal = selectedMeal.get();
+            mealTable.getMealTableWeek().remove(Weekday.valueOf(weekday), meal);
+            return new ResponseEntity<>(mealTable, HttpStatus.OK);
+        }
+    }
 }

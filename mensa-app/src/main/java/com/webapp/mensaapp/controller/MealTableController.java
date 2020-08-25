@@ -48,7 +48,11 @@ public class MealTableController {
 
     @PostMapping(path="/{mealTableId}/add/{mealId}/{weekday}")
     public ResponseEntity<MealTable> addMealToMealTable( @PathVariable("mealTableId") int mealTableId, @PathVariable("mealId") int mealId, @PathVariable("weekday") int weekday) {
-        System.out.print(weekday);
         return mealTableService.addMealToMealTable(mealTableId, mealId, weekday);
+    }
+
+    @DeleteMapping(path="/{mealTableId}/delete/{mealId}/{weekday}")
+    public ResponseEntity<MealTable> deleteMealFromMealTable( @PathVariable("mealTableId") int mealTableId, @PathVariable("mealId") int mealId, @PathVariable("weekday") int weekday) {
+        return mealTableService.deleteMealFromMealTable(mealTableId, mealId, weekday);
     }
 }
