@@ -40,7 +40,6 @@ public class MealTableService {
     }
 
     public void deleteMealTableById(int id) {
-        mealTableRepository.deleteById(id);
         Optional<MealTable> selectedMealTable = mealTableRepository.findById(id);
         if (selectedMealTable.isPresent()) {
             MealTable mealTable = selectedMealTable.get();

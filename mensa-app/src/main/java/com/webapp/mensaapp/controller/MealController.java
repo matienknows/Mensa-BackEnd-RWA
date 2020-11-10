@@ -35,7 +35,7 @@ public class MealController {
 
     //Update
     @PutMapping
-    public Meal updateMeal(@RequestBody Meal meal) {
+     public Meal updateMeal(@RequestBody Meal meal) {
         return mealService.updateMeal(meal);
     }
 

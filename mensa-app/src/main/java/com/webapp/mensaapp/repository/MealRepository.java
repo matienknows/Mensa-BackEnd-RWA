@@ -9,7 +9,7 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
 
     // Removes every object from meal from every mealplan
     @Modifying
-    @Query(value = "DELETE FROM meal_table_meal_table_week m WHERE m.meal_table_id = ?1", nativeQuery = true)
+    @Query(value = "DELETE FROM meal_table_meal_table_week m WHERE m.meal_table_week_id = ?1", nativeQuery = true)
     void deleteMealFromMealplanById(int id);
 
 }

@@ -23,7 +23,7 @@ public class MealTableController {
         return mealTableService.getMealTables();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/weekly/{id}")
     public Optional<MealTable> getMealTableById(@PathVariable("id") int id) {
         return mealTableService.getMealTableById(id);
     }

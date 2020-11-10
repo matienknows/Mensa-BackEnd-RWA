@@ -7,7 +7,7 @@ VALUES ('Vollkornnudeln', 'vegan', 2.30),
 ('Fischfilet', 'vegetarisch', 2.90);
 
 INSERT INTO meal_table (calendar_week)
-VALUES (1),(2),(3),(4),(5),(6),(7);
+VALUES (1),(2);
 
 INSERT INTO meal_table_meal_table_week (meal_table_id, meal_table_week_id, meal_table_week_key)
 VALUES
@@ -15,4 +15,9 @@ VALUES
 (1, 3, 1),
 (1, 1, 2),
 (1, 5, 3),
-(1, 2, 4);
+(1, 2, 4),
+(2, 1, 0),
+(2, 4, 1),
+(2, 3, 2),
+(2, 2, 3),
+(2, 5, 4);
